@@ -56,6 +56,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
     this.getDataPage(1);
   }
 
+
   protected list(
     request: PagedUsersRequestDto,
     pageNumber: number,

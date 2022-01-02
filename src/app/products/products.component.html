@@ -1,0 +1,121 @@
+<div [@routerTransition]>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6">
+            <h1>{{ "Products" | localize }}</h1>
+          </div>
+          <div class="col-6 text-right">
+            <a href="javascript:;" class="btn bg-blue" (click)="createProduct()">
+              <i class="fa fa-plus-square"></i>
+              {{ "Create" | localize }}
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="input-group-prepend">
+        <button
+          type="button"
+          class="btn bg-blue"
+          (click)="getDataPage(1)"
+        >
+          <i class="fas fa-search"></i>
+        </button>
+      </div> <!--button search enter-->
+      <input
+        type="text"
+        class="form-control"
+        name="keyword"
+        [placeholder]="'SearchWithThreeDot' | localize"
+        [(ngModel)]="keyword"
+        (keyup.enter)="getDataPage(1)"
+      /> <!--input search enter-->
+    </section>
+    <section class="content px-2">
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-header">
+              <p>Product</p>
+          </div>
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap" [busy]="isTableLoading">
+              <thead class="bg-light">
+                <tr>
+                  <th>{{ "STT" | localize }}</th>
+                  <th>{{ "Name" | localize }}</th>
+                  <th>{{ "Price" | localize }}</th>
+                  <th>{{ "Description" | localize }}</th>
+                  <th>{{ "Quantity" | localize }}</th>
+                  <th>{{ "Image" | localize }}</th>
+                  <th style="width: 310px;">{{ "Actions" | localize }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let product of products
+                      | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: pageSize,
+                            currentPage: pageNumber,
+                            totalItems: totalItems
+                          }; let indexOfElement = index
+                  "
+                >
+                  <td>{{ indexOfElement + 1 }}</td>
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.price }}</td>
+                  <td>{{ product.description }}</td>
+                  <td>{{ product.quantity }}</td>
+                  <td>{{ product.imagePath }}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-sm bg-secondary"
+                      (click)="editProduct(product.id)"
+                    >
+                      <i class="fas fa-pencil-alt"></i>
+                      {{ "Edit" | localize }}
+                    </button> <!--edit password-->
+                    <button
+                      type="button"
+                      class="btn btn-sm bg-danger mx-2"
+                      (click)="delete(product)"
+                    >
+                      <i class="fas fa-trash"></i>
+                      {{ "Delete" | localize }}
+                    </button> <!--delete password-->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer bg-light border-top">
+            <div class="row">
+              <div class="col-sm-4 col-12 text-sm-left text-center">
+                <button class="btn btn-secondary" (click)="refresh()">
+                  <i class="fas fa-redo-alt"></i>
+                </button>
+              </div>
+              <div class="col-sm-4 col-12 text-center">
+                <p class="mb-0 my-2">
+                  {{ "TotalRecordsCount" | localize: totalItems }}
+                </p>
+              </div>
+              <div class="col-sm-4 col-12">
+                <div class="float-sm-right m-auto">
+                  <abp-pagination-controls
+                    id="server"
+                    (pageChange)="getDataPage($event)"
+                  >
+                  </abp-pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <router-outlet></router-outlet>

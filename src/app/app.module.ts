@@ -1,3 +1,4 @@
+import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,6 +39,14 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+import { CreateProductComponent } from './products/create-product/create-product.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {DialogModule} from 'primeng/dialog';
+import {TableModule} from 'primeng/table';
+import {ToolbarModule} from 'primeng/toolbar';
+import {ToastModule} from 'primeng/toast';
+import {PaginatorModule} from 'primeng/paginator';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +76,10 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     SidebarComponent,
     SidebarLogoComponent,
     SidebarUserPanelComponent,
-    SidebarMenuComponent
+    SidebarMenuComponent,
+    ProductsComponent,
+    CreateProductComponent,
+    EditProductComponent
   ],
   imports: [
     CommonModule,
@@ -82,7 +94,13 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     AppRoutingModule,
     ServiceProxyModule,
     SharedModule,
+    TableModule,
     NgxPaginationModule,
+    ToolbarModule,
+    ToastModule,
+    DialogModule,
+    ConfirmDialogModule,
+    PaginatorModule,
   ],
   providers: [],
   entryComponents: [

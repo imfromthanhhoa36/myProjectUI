@@ -1,0 +1,81 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  [formGroup]="createProductForm"
+  (ngSubmit)="save()"
+  enctype="multipart/form-data"
+>
+  <abp-modal-header
+    [title]="'CreateNewProduct' | localize"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-1 col-form-label" for="name">
+        {{ "Name" | localize }}
+      </label>
+      <div class="col-md-11">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="name"
+        />
+      </div>
+    </div>
+    <div class="form-group row required">
+      <label class="col-md-1 col-form-label" for="price">
+        {{ "Price" | localize }}
+      </label>
+      <div class="col-md-11">
+        <input
+          type="text"
+          class="form-control"
+          id="price"
+          formControlName="price"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-1 col-form-label" for="description">
+        {{ "Description" | localize }}
+      </label>
+      <div class="col-md-11">
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          formControlName="description"
+        />
+      </div>
+    </div>
+    <div class="form-group row required">
+      <label class="col-md-1 col-form-label" for="quantity">
+        {{ "Quantity" | localize }}
+      </label>
+      <div class="col-md-11">
+        <input
+          type="text"
+          class="form-control"
+          id="quantity"
+          formControlName="quantity"
+        />
+      </div>
+    </div>
+    <div class="form-group row required">
+      <label class="col-md-1 col-form-label" for="image">
+        {{ "Image" | localize }}
+      </label>
+      <div class="col-md-11">
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            formControlName = "image"
+          />
+      </div>
+    </div>
+  </div>
+  <abp-modal-footer>
+    <button type="submit" class="btn btn-primary w-100 mt-2">Save</button>
+  </abp-modal-footer>
+</form>

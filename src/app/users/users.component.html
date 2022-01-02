@@ -27,7 +27,7 @@
               >
                 <i class="fas fa-search"></i>
               </button>
-            </div>
+            </div> <!--button search enter-->
             <input
               type="text"
               class="form-control"
@@ -35,7 +35,7 @@
               [placeholder]="'SearchWithThreeDot' | localize"
               [(ngModel)]="keyword"
               (keyup.enter)="getDataPage(1)"
-            />
+            /> <!--input search enter-->
             <div class="input-group-append">
               <button
                 type="button"
@@ -167,7 +167,7 @@
                     />
                     <label class="custom-control-label"></label>
                   </div>
-                </td>
+                </td> <!--checkbox isActive-->
                 <td>
                   <button
                     type="button"
@@ -176,7 +176,7 @@
                   >
                     <i class="fas fa-pencil-alt"></i>
                     {{ "Edit" | localize }}
-                  </button>
+                  </button> <!--edit password-->
                   <button
                     type="button"
                     class="btn btn-sm bg-danger mx-2"
@@ -184,7 +184,7 @@
                   >
                     <i class="fas fa-trash"></i>
                     {{ "Delete" | localize }}
-                  </button>
+                  </button> <!--delete password-->
                   <button
                     type="button"
                     class="btn btn-sm bg-secondary"
@@ -192,7 +192,7 @@
                   >
                     <i class="fas fa-lock"></i>
                     {{ "ResetPassword" | localize }}
-                  </button>
+                  </button><!--reset password-->
                 </td>
               </tr>
             </tbody>

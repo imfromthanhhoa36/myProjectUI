@@ -1,5 +1,9 @@
+import { Product } from './../shared/service-proxies/service-proxies';
+import { ProductsComponent } from './products/products.component';
+import { CreateProductComponent } from './products/create-product/create-product.component';
+import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 import { HomeComponent } from './home/home.component';
@@ -21,8 +25,14 @@ import { ChangePasswordComponent } from './users/change-password/change-password
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent },
-                    { path: 'update-password', component: ChangePasswordComponent }
+                    { path: 'update-password', component: ChangePasswordComponent },
+                    { path: 'products', component: ProductsComponent, data: { permission: 'Pages.Products' }, canActivate: [AppRouteGuard],
+                        children: [
+                            { path: 'updateProduct/:id', component: EditProductComponent },
+                            { path: 'createProduct', component: CreateProductComponent },
+                        ]},
                 ]
+                // loadChildren: () => import('./products/products.module').then(m=> m.ProductsModule),
             }
         ])
     ],
